@@ -6,8 +6,24 @@
     <body>
         <h1>Login callback</h1>
         <script>
-            const queryString = window.location.search;
-            console.log(queryString);
+            const queryString = window.location.hash.substring(1);
+            const urlParams = new URLSearchParams(queryString);
+            const accessToken = urlParams.get('access_token');
+            const expiresIn = urlParams.get('expires_in');
+            const tokenType = urlParams.get('token_type');
+
+            // Debug
+            console.log(accessToken);
+            console.log(expiresIn);
+            console.log(tokenType);
+
+            //Set cookies
+            document.cookie = "access_token=" + accessToken;
+            document.cookie = "expires_in=" + expiresIn;
+            document.cookie = "token_type=" + tokenType;
+
+            //Jump to the PDF list page
+            window.location.href = "./show";
         </script>
     </body>
 </html>

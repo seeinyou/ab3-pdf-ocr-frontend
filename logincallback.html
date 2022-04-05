@@ -21,13 +21,17 @@
                 console.log(expiresIn);
                 console.log(tokenType);
 
+                // Calculate expiration date
+                const date = new Date();
+                date.setTime(date.getTime() + expiresIn * 1000);
+                let expires = 'expires=' + date.toUTCString();
+
                 //Set cookies
-                document.cookie = "access_token=" + accessToken;
-                document.cookie = "expires_in=" + expiresIn;
-                document.cookie = "token_type=" + tokenType;
+                document.cookie = "access_token=" + accessToken + ';' + expires + ';path=/';
+                document.cookie = "token_type=" + tokenType + ';' + expires + ';path=/';
 
                 // Set the Authorization header
-                document.cookie = "Authorization=" + tokenType + " " + accessToken;
+                document.cookie = "Authorization=" + tokenType + " " + accessToken + ';' + expires + ';path=/';
 
                 //Jump to the PDF list page
                 window.location.href = "./show";

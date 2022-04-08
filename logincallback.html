@@ -27,11 +27,11 @@
                 let expires = 'expires=' + date.toUTCString();
 
                 //Set cookies
-                document.cookie = "access_token=" + accessToken + ';' + expires + ';path=/';
-                document.cookie = "token_type=" + tokenType + ';' + expires + ';path=/';
+                document.cookie = "access_token=" + accessToken + ';' + expires + ';path=/；httpOnly';
+                document.cookie = "token_type=" + tokenType + ';' + expires + ';path=/;httpOnly';
 
                 // Set the Authorization header
-                document.cookie = "Authorization=" + tokenType + " " + accessToken + ';' + expires + ';path=/';
+                document.cookie = "Authorization=" + tokenType + " " + accessToken + ';' + expires + ';path=/;httpOnly';
 
                 //Jump to the PDF list page
                 window.location.href = "./show";
